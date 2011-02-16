@@ -1,0 +1,139 @@
+          ___  _ _       _  _____ ____  ____  ____  ____  ____ ___  _
+          \  \/// \     / |/  __//  _ \/  __\/  _ \/  __\/  _ \\  \//
+           \  / | |     | ||  \  | / \||  \/|| / \||  \/|| | \| \  /
+           / /  \_/  /\_| ||  /_ | \_/||  __/| |-|||    /| |_/| / /
+          /_/   (_)  \____/\____\\____/\_/   \_/ \|\_/\_\\____//_/
+
+
+             I'll take 'Colors that end in -urple' for $200
+                           What is Light Urple?
+
+Howdy!  If you are reading this, you're probably wondering: what is this folder,
+why am I here, who am I, why are you wearing a purple suit?  Most of these
+questions I can't answer.  But the important one, #1, I can.  This folder
+contains all the code you need to run Yahoo! Jeopardy.  A little side project
+that St. John Johnson, Alex Ivashchenko, and Suresh Jayanty created for the
+2010 Systools Holiday Party.
+
+
+
+
+                              ** Preamble **
+Y! Jeopardy uses several 3rd party open source libraries and tools.
+This file summarizes the tools used, their purpose, and the licenses under which they're released.
+
+Except as specifically stated below, the 3rd party software packages are not distributed as part of
+this project, but instead are separately downloaded from the respective provider and built on the
+developer’s machine as a pre-build step.
+
+Downloaded javascript libraries should be placed under public_html/a folder in respectful directories,
+except prototype.js which should placed directly into public_html/a folder.
+
+* prototype version 1.7 (MIT license)
+(Prototype is a JavaScript Framework that aims to ease development of dynamic web applications.)
+[http://prototypejs.org/]
+-----------------------
+* script.aculo.us version 1.8.3 (MIT license)
+(script.aculo.us provides you with easy-to-use, cross-browser user interface JavaScript libraries to make your web sites and web applications fly.)
+[http://script.aculo.us/]
+-----------------------
+* livepipe (MIT license)
+(LivePipe UI is a suite of high quality widgets and controls for web 2.0 applications built using the Prototype JavaScript Framework.)
+[http://livepipe.net/]
+-----------------------
+* zepto version 0.4 (MIT license)
+(Zepto.js is a minimalist JavaScript framework for mobile WebKit browsers, with a jQuery-compatible syntax.)
+[http://zeptojs.com/]
+-----------------------
+* google-jstemplate (Apache License 2.0)
+(Simple and robust browser side template processing for Ajax based web applications.)
+[http://code.google.com/p/google-jstemplate/]
+
+Downloaded font files should placed under public_html/s/fonts folder.
+
+-----------------------
+* Droid Sans font family (Apache License 2.0)
+(Modern looking sans-serif open source font family.)
+[http://code.google.com/webfonts/family?family=Droid+Sans&subset=latin]
+
+
+
+                            ** Installation **
+The installation is relatively simple on most machines (except Yahoo boxes).
+
+Requirements:
+ - Some sort of HTTP server (apache preferred)
+ - PHP 5..something
+ - PHP Json (yphp_json)
+ - PHP APC (yphp_apc)
+
+It's best to point your root URL at public_html/
+ - Example: http://yjeopardy.yahoo.com/ => public_html/
+Otherwise, there might be some minor errors with CSS/JS absolute path junk
+
+
+
+                            ** Configuration **
+Configuration is done in the Config.php file
+ - ADMIN_USERNAME is the Username to access admin.php and test.php
+ - ADMIN_PASSWORD is the Password to access admin.php and test.php
+ - ADMIN_SECRET is a secret key that is required for all admin API commands.
+                Basically, it prevents malicious users from abusing your system.
+ - NUM_ROUNDS is.. well the number of rounds in the game
+
+Questions are stored in questions/ (duh) and should be in the format:
+ - round-{ROUND NUMBER}.yaml
+
+The contents of these files are stored in a relatively confusing format (jk):
+
+Category 1:
+  Points:
+  - Question
+  - Answer
+  Points:
+  - Question
+  - Answer
+  - Daily Double
+
+If you don't provide a Daily Double, one will automagically be picked.
+
+
+
+                             ** Gameplay **
+Note: The CSS/JS actions in this game were designed for use in a WebKit browser.
+      It will work in other browsers (kinda), but won't look as pretty.  So try
+      to use Chrome (woohoo) or Safari (yuck).
+
+The main screen can be accessed via /main.html
+  It was designed to look the prettiest in full screen mode
+  Also, there are no sounds - future feature, I swear
+
+The admin panel can be accessed via /admin.php (username/password set in config)
+  This was made for a hand-held device (iPhone or Droid)
+
+The user interface can be accessed via /index.php or alternate UI /index.php?alt
+  This was also made for a hand-held device (iPhone or Droid)
+
+For testing, you can also use /text.php (username/password set in config)
+  This gives you access to test the raw API calls
+
+
+
+                             ** Side Notes **
+Any questions regarding gameplay, installation, or configuration - please feel
+free to ping any one of us.  We don't bite (actually scratch that, I think Alex
+has been known to).
+
+Important people to thank:
+ - Chris Arnold, for the original idea and questions
+ - Fergus Sullivan, for more questions and mental support
+ - Boba Fett, for being the man
+
+Appropriate distribution of blame:
+ - Main screen and Primary UI
+   - Alex Ivashchenko <alexi@yahoo-inc.com>
+ - Alternate UI and Admin UI
+   - St. John Johnson <stjohn@yahoo-inc.com>
+ - PHP API/Backend
+   - St. John Johnson <stjohn@yahoo-inc.com>
+   - Suresh Jayanty <jayantys@yahoo-inc.com>

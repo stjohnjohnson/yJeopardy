@@ -1,0 +1,183 @@
+* {
+	margin: 0;
+	padding: 0;
+  border: 0;
+  outline: 0;
+}
+html {
+  height: 100%;
+  font-family: "Droid Sans", "Helvetica", sans-serif;
+  background: #7E19A6;
+  color: #FFF;
+  font-size: 12px;
+  overflow: visible;
+  -webkit-user-select: none;
+  -webkit-text-size-adjust: none;
+}
+body, div, ul, a { cursor: hand; }
+img { border: none; }
+a {
+  color: blue;
+  text-decoration: none;
+  text-underline-style: dotted;
+}
+
+/** Custom Classes **/
+div#loader {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background-color: #000;
+  filter: alpha(opacity=0); /* IE's opacity*/
+  opacity: 0;
+  padding-top: 180px;
+  text-align: center;
+  width: 320px;
+  height: 240px;
+}
+div.container {
+  background: #CCC;
+  float: left;
+  width: 320px;
+  min-height: 420px;
+  overflow: visible;
+  background-color: #7E19A6;
+}
+.message {
+  margin: 0 auto;
+  width: 250px;
+  background-color: #FFF;
+  color: #000;
+  font-size: 15px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  padding: 5px;
+}
+.menu {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-bottom: 1px solid #2d3642;
+  border-top: 1px solid #6d84a2;
+  padding: 4px;
+  background-color: #ccc;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#eeeeee), to(#cccccc));
+  height: 35px;
+  font-size: 22px;
+  text-shadow: rgba(255, 255, 255, 0.6) 0px 1px 0;
+  color: #909;
+  text-align: right;
+}
+
+span.button {
+  overflow: hidden;
+  margin: 0;
+  border-width: 0 5px;
+  width: auto;
+  height: 25px;
+  line-height: 25px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: bold;
+  color: #900;
+  text-shadow: rgba(255, 255, 255, 0.6) 0px 1px 0;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  white-space: nowrap;
+  max-width: 55px;
+	color: #fff;
+	display: inline-block;
+	padding: 0px 10px;
+  -webkit-border-radius: 5px;
+  background-image: -webkit-gradient(linear, left top, left bottom,
+	 from(#998299),
+	 color-stop(0.5, #993799),
+	 color-stop(0.5, #991a99),
+	 to(#991a99));
+  border: solid 1px rgba(79, 79, 79, 0.75);
+}
+
+h2 {
+  height: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: rgba(1, 1, 1, 0.4) 0px 1px 0;
+  text-align: left;
+  padding-left: 15px;
+  color: #FFF;
+}
+
+div.button {
+	cursor: pointer;
+	text-align: center;
+  margin: 0 auto;
+  width: 200px;
+	border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-color: #999;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#aaaaaa), to(#999999));
+  color: white;
+  font-size: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid #0e242f;
+  -moz-box-shadow: 0px 0px 2px #061D28;
+  -webkit-box-shadow: 0px 0px 2px #061D28;
+  box-shadow: 0px 0px 2px #061D28;
+}
+div.red {
+  background-color: #900;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#aa0000), to(#990000));
+}
+div.green {
+  background-color: #090;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#00aa00), to(#009900));
+}
+/* fonts */
+/* Droid Sans Mono */
+@font-face
+{
+  font-family: 'Droid Sans Mono';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Droid Sans Mono'), local('DroidSansMono'), url('fonts/DroidSansMono.ttf') format('truetype');
+}
+/* Droid Sans */
+@font-face
+{
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Droid Sans'), local('DroidSans'), url('fonts/DroidSans.ttf') format('truetype');
+}
+@font-face
+{
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Droid Sans Bold'), local('DroidSans-Bold'), url('fonts/DroidSans-Bold.ttf') format('truetype');
+}
+/* Droid Serif */
+@font-face
+{
+  font-family: 'Droid Serif';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Droid Serif Bold'), local('DroidSerif-Bold'), url('fonts/DroidSerif-Bold.ttf') format('truetype');
+}
+@font-face
+{
+  font-family: 'Droid Serif';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Droid Serif'), local('DroidSerif'), url('fonts/DroidSerif.ttf') format('truetype');
+}
+@font-face
+{
+  font-family: 'Droid Serif';
+  font-style: italic;
+  font-weight: normal;
+  src: local('Droid Serif Italic'), local('DroidSerif-Italic'), url('fonts/DroidSerif-Italic.ttf') format('truetype');
+}

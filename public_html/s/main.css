@@ -1,0 +1,593 @@
+/* reset */
+*
+{
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    outline: 0px;
+    font-size: 1px;
+    -webkit-user-select: none;
+    user-select: none;
+}
+/* common */
+html
+{
+    height: 100%;
+    font-family: "Droid Sans", "Helvetica", sans-serif;
+}
+body
+{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000000;
+/*     cursor: none !important; */
+}
+#dummy
+{
+    display: none;
+}
+@-webkit-keyframes screeny
+{
+    0%
+    {
+        opacity: 0.9;
+    }
+    100%
+    {
+        opacity: 0.7;
+    }
+}
+#screen
+{
+    -webkit-animation-iteration-count: none;
+    -webkit-transition: opacity 1s linear;
+
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    width: auto;
+    height: auto;
+    background-color: #000000;
+    opacity: 0;
+}
+    #screen.active
+    {
+        -webkit-animation-name: screeny;
+        -webkit-animation-duration: 1s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-direction: alternate;
+        -webkit-animation-delay: 1s;
+        opacity: 1;
+    }
+#screen div
+{
+
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    margin: auto;
+    height: 100px;
+    line-height: 100px;
+    font-size: 72px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 10px #ffffff;
+}
+#main
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -384px;
+    margin-left: -512px;
+    width: 1024px;
+    height: 768px;
+    background-color: #000000;
+    border: 1px solid #000000;
+}
+@-webkit-keyframes flashy
+{
+    0%
+    {
+        opacity: 0;
+    }
+    100%
+    {
+        opacity: 0.25;
+    }
+}
+#status
+{
+    -webkit-animation-name: flashy;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 840px;
+    height: 60px;
+    text-align: center;
+    overflow: hidden;
+    color: #ffffff;
+    font-size: 36px;
+    line-height: 60px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#timer
+{
+    position: absolute;
+    top: 20px;
+    right: 0px;
+    width: 840px;
+    height: 20px;
+    text-align: center;
+    overflow: hidden;
+}
+#timer li
+{
+    list-style: none;
+    display: inline-block;
+    width: 12px;
+    height: 18px;
+    border: 1px solid #ff0000;
+    margin-right: 11px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(255, 0, 0, 0.8);
+    box-shadow: 0px 0px 10px 0px rgba(255, 0, 0, 0.8);
+
+}
+    #timer li:last-child
+    {
+        margin-right: 0px;
+    }
+    #timer li.fill
+    {
+        background-color: #ff0000;
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff0000), to(#c00000));
+    }
+#shade
+{
+    position: absolute;
+    top: 40px;
+    left: -3px;
+    width: 174px;
+    height: 640px;
+    border: 20px solid #000000;
+    border-width: 20px 2px;
+    -webkit-border-image: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#000000), color-stop(0.02, #000000), color-stop(0.07, transparent), color-stop(0.93, transparent), color-stop(0.98, #000000)) 20 2 20 2 repeat repeat;
+}
+#players
+{
+    position: absolute;
+    top: 41px;
+    left: 0px;
+    width: 174px;
+    height: 658px;
+    padding: 10px 0px;
+    overflow: hidden;
+}
+#players li.player
+{
+    position: relative;
+    display: block;
+    list-style: none;
+    width: 172px;
+    height: 38px;
+    margin-bottom: 8px;
+    font-color: #000000;
+    background-color: #ffffff;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff), to(#c0c0c0));
+}
+    #players li.empty
+    {
+        position: relative;
+        display: block;
+        list-style: none;
+        width: 172px;
+        height: 5px;
+        visibility: hidden;
+    }
+    #players li:first-child
+    {
+        margin-top: 20px;
+    }
+    #players li:last-child
+    {
+        margin-bottom: 20px;
+    }
+    #players li.hover
+    {
+        background-color: #eeeeee;
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#eeeeee), to(#b0b0b0));
+    }
+#players li .name
+{
+    position: absolute;
+    display: block;
+    top: 5px;
+    left: 10px;
+    height: 28px;
+    line-height: 28px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #555555;
+    overflow: hidden;
+    text-shadow: 0px 0px 2px rgba(240, 240, 240, 1);
+}
+    #players li.active .name
+    {
+        color: #f52815;
+        text-shadow: 0px 0px 2px rgba(255, 255, 255, 1);
+    }
+#players li .score,
+#players li .buzz
+{
+    position: absolute;
+    display: block;
+    top: 5px;
+    right: 10px;
+    height: 28px;
+    text-align: right;
+    white-space: nowrap;
+    line-height: 28px;
+    font-size: 18px;
+    font-family: "Droid Sans Mono", "Courier", monospace;
+    color: #1e2442;
+    overflow: hidden;
+}
+    #players li.active .score
+    {
+        display: none;
+    }
+#players li .buzz
+{
+    display: none;
+}
+    @-webkit-keyframes flashing
+    {
+        0%
+        {
+            opacity: 0;
+        }
+        100%
+        {
+            opacity: 1;
+        }
+    }
+    #players li.active .buzz
+    {
+        -webkit-animation-name: flashing;
+        -webkit-animation-duration: 1s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-direction: alternate;
+
+        display: block;
+        font-weight: bold;
+        color: #f52815;
+        text-shadow: 0px 0px 2px rgba(245, 40, 21, 0.6);
+    }
+#board
+{
+    position: absolute;
+    top: 60px;
+    right: 0px;
+    width: 820px;
+    height: 618px;
+    padding: 10px;
+    background-color: #606060;
+    overflow: hidden;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0px 0px 2px 0px rgba(255, 255, 255, 0.8);
+    box-shadow: inset 0px 0px 2px 0px rgba(255, 255, 255, 0.8);
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+}
+#board .category
+{
+    position: relative;
+    display: inline-block;
+    width: 130px;
+    height: 618px;
+    margin-right: 8px;
+}
+    #board .category:last-child
+    {
+        margin-right: 0px;
+    }
+#board .category .head,
+#board .category .question
+{
+    position: relative;
+    width: 130px;
+    height: 96px;
+    margin-bottom: 2px;
+    background-color: #5f00cf;
+    color: #ffffff;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 0px 2px 0px rgba(255, 255, 255, 0.8);
+    box-shadow: 0px 0px 2px 0px rgba(255, 255, 255, 0.8);
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+}
+    #board .category.selecting .head,
+    #board .category.selecting .question
+    {
+        background-color: #460099;
+    }
+    #board .category .head.hover,
+    #board .category .question.hover
+    {
+        -webkit-box-shadow: 0px 0px 6px 1px rgba(255, 255, 255, 0.8);
+        box-shadow: 0px 0px 6px 1px rgba(255, 255, 255, 0.8);
+    }
+
+    #board .category .question.step0
+    {
+        -webkit-box-shadow: 0px 0px 1px 1px rgba(255, 255, 255, 1);
+        box-shadow: 0px 0px 1px 1px rgba(255, 255, 255, 1);
+    }
+    #board .category .question.step1,
+    #board .category .question.step11
+    {
+        -webkit-box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 1);
+        box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 1);
+    }
+    #board .category .question.step2,
+    #board .category .question.step10
+    {
+        -webkit-box-shadow: 0px 0px 4px 1px rgba(255, 255, 255, 1);
+        box-shadow: 0px 0px 4px 1px rgba(255, 255, 255, 1);
+    }
+    #board .category .question.step3,
+    #board .category .question.step9
+    {
+        -webkit-box-shadow: 0px 0px 6px 1px rgba(255, 255, 255, 1);
+        box-shadow: 0px 0px 6px 1px rgba(255, 255, 255, 1);
+    }
+    #board .category .question.step4,
+    #board .category .question.step8
+    {
+        -webkit-box-shadow: 0px 0px 8px 1px rgba(255, 255, 255, 1);
+        box-shadow: 0px 0px 8px 1px rgba(255, 255, 255, 1);
+    }
+    #board .category .question.step5,
+    #board .category .question.step7
+    {
+        -webkit-box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 1);
+        box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 1);
+    }
+    #board .category .question.step6
+    {
+        -webkit-box-shadow: 0px 0px 12px 1px rgba(255, 255, 255, 1);
+        box-shadow: 0px 0px 12px 1px rgba(255, 255, 255, 1);
+    }
+
+
+#board .category .question
+{
+    margin-bottom: 0px;
+    margin-top: 8px;
+}
+#board .category .head .content,
+#board .category .question .points
+{
+    position: static;
+    display: table-cell;
+    width: 120px;
+    height: 86px;
+    padding: 5px;
+    font-size: 22px;
+    text-align: center;
+    vertical-align: middle;
+}
+#board .category .question .qbox
+{
+    position: absolute;
+    width: 130px;
+    height: 96px;
+    background-color: transparent;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    overflow: hidden;
+}
+#board .category .question .container,
+#board .category .question .qcontainer
+{
+    position: absolute;
+    width: 130px;
+    height: 96px;
+    background-color: #5f00cf;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    overflow: hidden;
+}
+    #board .category .question .qcontainer
+    {
+        text-shadow: 0px 0px 4px #000000;
+    }
+    @-webkit-keyframes doubles
+    {
+        0%
+        {
+            text-shadow: 0px 0px 1px #000000;
+        }
+        100%
+        {
+            text-shadow: 0px 0px 8px #000000;
+        }
+    }
+    #board .category .question .qcontainer.doubles
+    {
+        -webkit-animation-name: doubles;
+        -webkit-animation-duration: 1.0s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-direction: alternate;
+        -webkit-animation-timing-function: linear;
+
+        background: -webkit-gradient(linear, 0% 0%, 100% 100%,
+                    from(#5f00cf), to(#7626D6),
+                    color-stop(0.001, #5f00cf),
+                    color-stop(0.048, #5f00cf),
+                    color-stop(0.051, #7626D6),
+                    color-stop(0.098, #7626D6),
+
+                    color-stop(0.101, #5f00cf),
+                    color-stop(0.148, #5f00cf),
+                    color-stop(0.151, #7626D6),
+                    color-stop(0.198, #7626D6),
+
+                    color-stop(0.201, #5f00cf),
+                    color-stop(0.248, #5f00cf),
+                    color-stop(0.251, #7626D6),
+                    color-stop(0.298, #7626D6),
+
+                    color-stop(0.301, #5f00cf),
+                    color-stop(0.348, #5f00cf),
+                    color-stop(0.351, #7626D6),
+                    color-stop(0.398, #7626D6),
+
+                    color-stop(0.401, #5f00cf),
+                    color-stop(0.448, #5f00cf),
+                    color-stop(0.451, #7626D6),
+                    color-stop(0.498, #7626D6),
+
+                    color-stop(0.501, #5f00cf),
+                    color-stop(0.548, #5f00cf),
+                    color-stop(0.551, #7626D6),
+                    color-stop(0.598, #7626D6),
+
+                    color-stop(0.601, #5f00cf),
+                    color-stop(0.648, #5f00cf),
+                    color-stop(0.651, #7626D6),
+                    color-stop(0.698, #7626D6),
+
+                    color-stop(0.701, #5f00cf),
+                    color-stop(0.748, #5f00cf),
+                    color-stop(0.751, #7626D6),
+                    color-stop(0.798, #7626D6),
+
+                    color-stop(0.801, #5f00cf),
+                    color-stop(0.848, #5f00cf),
+                    color-stop(0.851, #7626D6),
+                    color-stop(0.898, #7626D6),
+
+                    color-stop(0.901, #5f00cf),
+                    color-stop(0.948, #5f00cf),
+                    color-stop(0.951, #7626D6),
+                    color-stop(0.998, #7626D6),
+
+                    color-stop(1.000, #7626D6)
+                    );
+    }
+    #board .category .question .qcontainer.doubles:after
+    {
+        content: 'Daily Double';
+
+        display: block;
+        color: #ffffff;
+        font-size: 36px;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+        opacity: 0.5;
+        text-shadow: 0px;
+    }
+    #board .category.selecting .question .container,
+    #board .category.selecting .question .qcontainer
+    {
+        background-color: #460099;
+    }
+    #board .category .question .qcontainer
+    {
+        margin: 5px;
+        width: 120px;
+        height: 86px;
+    }
+    #board .category .question .qbox .container
+    {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    }
+#board .category .question .points
+{
+    font-size: 36px;
+}
+#board .category .question .data
+{
+    position: relative;
+    display: table-cell;
+    width: 130px;
+    height: 96px;
+    font-size: 12px;
+    text-align: center;
+    vertical-align: middle;
+}
+/* fonts */
+/* Droid Sans Mono */
+@font-face
+{
+  font-family: 'Droid Sans Mono';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Droid Sans Mono'), local('DroidSansMono'), url('/s/fonts/DroidSansMono.ttf') format('truetype');
+}
+/* Droid Sans */
+@font-face
+{
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Droid Sans'), local('DroidSans'), url('/s/fonts/DroidSans.ttf') format('truetype');
+}
+@font-face
+{
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Droid Sans Bold'), local('DroidSans-Bold'), url('/s/fonts/DroidSans-Bold.ttf') format('truetype');
+}
+/* Droid Serif */
+@font-face
+{
+  font-family: 'Droid Serif';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Droid Serif Bold'), local('DroidSerif-Bold'), url('/s/fonts/DroidSerif-Bold.ttf') format('truetype');
+}
+@font-face
+{
+  font-family: 'Droid Serif';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Droid Serif'), local('DroidSerif'), url('/s/fonts/DroidSerif.ttf') format('truetype');
+}
+@font-face
+{
+  font-family: 'Droid Serif';
+  font-style: italic;
+  font-weight: normal;
+  src: local('Droid Serif Italic'), local('DroidSerif-Italic'), url('/s/fonts/DroidSerif-Italic.ttf') format('truetype');
+}

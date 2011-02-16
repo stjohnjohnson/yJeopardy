@@ -1,0 +1,507 @@
+html,
+body
+{
+    margin: 0px;
+    background-color: #606060;
+    font-family: "Droid Sans", "Helvetica", sans-serif;
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: none;
+}
+    body.normal #container
+    {
+        -webkit-transform: rotate(0deg);
+    }
+    body.left #container
+    {
+        -webkit-transform: rotate(-90deg);
+    }
+    body.right #container
+    {
+        -webkit-transform: rotate(90deg);
+    }
+    body.upsidedown #container
+    {
+        -webkit-transform: rotate(180deg);
+    }
+.hidden
+{
+    display: none;
+}
+#preloader
+{
+    position: absolute;
+    visibility: hidden;
+}
+#preloader .yahoo
+{
+    font-family: "Yahoo", serif;
+}
+#container
+{
+    position: relative;
+
+/*
+    top: 50%;
+    left: 50%;
+    margin-top: -220px;
+    margin-left: -160px;
+*/
+    width: 320px;
+    height: 356px;
+    overflow: hidden;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-perspective: 1000;
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 0.5s;
+}
+#user,
+#picked_question
+{
+    -webkit-transition: opacity 1s linear;
+    opacity: 0;
+
+    position: absolute;
+    bottom: 160px;
+    height: 30px;
+    line-height: 30px;
+    width: 290px;
+    font-weight: bold;
+    font-size: 24px;
+    color: #808080;
+    text-transform: uppercase;
+    text-shadow: -1px 0px 0px #000000;
+}
+    #user.active,
+    #picked_question.active
+    {
+        opacity: 1;
+    }
+#user
+{
+    left: -125px;
+    -webkit-transform: rotate(-90deg);
+}
+#picked_question
+{
+    right: -125px;
+    font-size: 20px;
+    -webkit-transform: rotate(90deg);
+}
+#user .score,
+#picked_question .points
+{
+    float: right;
+}
+#page
+{
+    position: absolute;
+    width: 320px;
+    height: 356px;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 1.5s;
+}
+    #page.flipped
+    {
+        -webkit-transform: rotateY(180deg);
+    }
+.card
+{
+    position: absolute;
+    margin: 18px 35px;
+    width: 250px;
+    height: 320px;
+    background-color: #c8c8c8;
+    text-align: center;
+    -webkit-border-radius: 10px;
+    -webkit-background-clip: padding-box;
+    -webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
+    -webkit-backface-visibility: hidden;
+}
+    .card.content
+    {
+        background-color: rgba(95, 0, 207, 1);
+    }
+h1
+{
+    width: 90%;
+    margin: 1em 5%;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 0px -1px 0px #404040;
+}
+.sign
+{
+    display: block;
+    margin: 12px 0px;
+    color: #c0c0c0;
+    font-family: "Helvetica", sans-serif;
+    font-size: 64px;
+    line-height: 100px;
+    font-weight: bold;
+    text-shadow: 0px 0px 5px #ffffff;
+}
+    .sign.yahoo
+    {
+        color: #5200b4;
+        font-family: "Yahoo", serif;
+        text-shadow: none;
+    }
+    @-webkit-keyframes rotating
+    {
+        0%
+        {
+            -webkit-transform: rotate(0deg);
+        }
+        100%
+        {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+    .sign.rotating
+    {
+        -webkit-animation-name: rotating;
+        -webkit-animation-duration: 5s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-timing-function: linear;
+    }
+    #page.flipped .sign.rotating
+    {
+        -webkit-animation-iteration-count: none;
+    }
+.card .message,
+.card .question
+{
+    display: table;
+    width: 200px;
+    height: 150px;
+    margin: 40px 25px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 0px -1px 0px #000000;
+}
+    .card.doubles
+    {
+        background: -webkit-gradient(linear, 0% 0%, 100% 100%,
+                    from(#5f00cf), to(#7626D6),
+                    color-stop(0.001, #5f00cf),
+                    color-stop(0.048, #5f00cf),
+                    color-stop(0.051, #7626D6),
+                    color-stop(0.098, #7626D6),
+
+                    color-stop(0.101, #5f00cf),
+                    color-stop(0.148, #5f00cf),
+                    color-stop(0.151, #7626D6),
+                    color-stop(0.198, #7626D6),
+
+                    color-stop(0.201, #5f00cf),
+                    color-stop(0.248, #5f00cf),
+                    color-stop(0.251, #7626D6),
+                    color-stop(0.298, #7626D6),
+
+                    color-stop(0.301, #5f00cf),
+                    color-stop(0.348, #5f00cf),
+                    color-stop(0.351, #7626D6),
+                    color-stop(0.398, #7626D6),
+
+                    color-stop(0.401, #5f00cf),
+                    color-stop(0.448, #5f00cf),
+                    color-stop(0.451, #7626D6),
+                    color-stop(0.498, #7626D6),
+
+                    color-stop(0.501, #5f00cf),
+                    color-stop(0.548, #5f00cf),
+                    color-stop(0.551, #7626D6),
+                    color-stop(0.598, #7626D6),
+
+                    color-stop(0.601, #5f00cf),
+                    color-stop(0.648, #5f00cf),
+                    color-stop(0.651, #7626D6),
+                    color-stop(0.698, #7626D6),
+
+                    color-stop(0.701, #5f00cf),
+                    color-stop(0.748, #5f00cf),
+                    color-stop(0.751, #7626D6),
+                    color-stop(0.798, #7626D6),
+
+                    color-stop(0.801, #5f00cf),
+                    color-stop(0.848, #5f00cf),
+                    color-stop(0.851, #7626D6),
+                    color-stop(0.898, #7626D6),
+
+                    color-stop(0.901, #5f00cf),
+                    color-stop(0.948, #5f00cf),
+                    color-stop(0.951, #7626D6),
+                    color-stop(0.998, #7626D6),
+
+                    color-stop(1.000, #7626D6)
+                    );
+    }
+    .card.doubles:after
+    {
+        content: 'Daily Doubles';
+
+        display: block;
+        color: #ffffff;
+        font-size: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+        opacity: 0.5;
+        text-shadow: 0px;
+    }
+    .card .message
+    {
+        height: 240px;
+    }
+.card .message .cell,
+.card .question .cell
+{
+    display: table-cell;
+    vertical-align: middle;
+}
+    @-webkit-keyframes doubles
+    {
+        0%
+        {
+            text-shadow: 0px 0px 1px #ffffff;
+        }
+        100%
+        {
+            text-shadow: 0px 0px 10px #ffffff;
+        }
+    }
+    .card.doubles .cell
+    {
+        -webkit-animation-name: doubles;
+        -webkit-animation-duration: 0.75s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-direction: alternate;
+        -webkit-animation-timing-function: linear;
+    }
+/* error card */
+.error
+{
+    background-color: rgba(245, 40, 21, 1);
+    color: #ffffff;
+}
+.error h1
+{
+    height: 80px;
+    margin-top: 130px;
+}
+/* status cards */
+.status
+{
+    -webkit-transform: rotateY(180deg);
+}
+.status .sign
+{
+    position: static;
+    margin: 110px 75px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    -webkit-transition: all 2s linear;
+    -webkit-transition-delay: 1s;
+}
+    .status h1+.sign
+    {
+        margin-top: 70px;
+    }
+/* question card */
+#question ul
+{
+    -webkit-transition: opacity 0.5s linear;
+    -webkit-transition-delay: 0.5s;
+
+    margin: -5px 0px 0px;
+    padding: 0px;
+    text-align: left;
+    opacity: 0;
+}
+    #question ul.ready
+    {
+        opacity: 1;
+    }
+    #question ul.categories
+    {
+        float: left;
+        margin-left: 20px;
+    }
+    #question ul.points
+    {
+        margin-left: 185px;
+    }
+#question ul li
+{
+    list-style: none;
+    display: block;
+    color: #ffffff;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.33);
+    border-top-width: 0px;
+    overflow: hidden;
+    -webkit-background-clip: padding-box;
+}
+    #question ul li.available
+    {
+        color: rgba(255, 255, 255, 1);
+    }
+    #question ul li.selected
+    {
+        background-color: #ffffff;
+        color: rgba(95, 0, 207, 1);
+    }
+    #question ul li:first-child
+    {
+        border-top-width: 1px;
+    }
+    #question ul.categories li
+    {
+        width: 163px;
+        height: 32px;
+        line-height: 32px;
+        font-size: 12px;
+    }
+    #question ul.categories li:first-child
+    {
+        border-top-left-radius: 10px;
+    }
+    #question ul.categories.ready li:last-child
+    {
+        border-bottom-left-radius: 10px;
+    }
+    #question ul.points li
+    {
+        width: 44px;
+        height: 38px;
+        line-height: 38px;
+        font-size: 14px;
+        border-left: 0px;
+    }
+        #question ul.points li:first-child
+        {
+            border-top-right-radius: 10px;
+        }
+        #question ul.points.ready li:last-child
+        {
+            border-bottom-right-radius: 10px;
+        }
+        #question ul.points.ready li:nth-child(odd)
+        {
+            height: 39px;
+            line-height: 39px;
+        }
+/* buzz */
+#buzz_submit
+{
+    -webkit-transition-property: color 0.5s linear;
+
+    margin: 70px auto 0px;
+    width: 150px;
+    height: 150px;
+    font-size: 30px;
+    line-height: 150px;
+    overflow: hidden;
+    -webkit-border-radius: 75px;
+    text-shadow: 0px 1px 0px #808080;
+}
+    @-webkit-keyframes flashing
+    {
+        0%
+        {
+            -webkit-box-shadow: 0px 0px 1px #fc9d9a;
+        }
+        100%
+        {
+            -webkit-box-shadow: 0px 0px 30px #ff0000;
+        }
+    }
+    #buzz_submit.enabled
+    {
+        -webkit-animation-name: flashing;
+        -webkit-animation-duration: 0.75s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-direction: alternate;
+        -webkit-animation-timing-function: linear;
+
+        color: #ffffff;
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f08080), to(#f04040));
+    }
+    #buzz_submit.pressed
+    {
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e0e0e0), to(#c0c0c0));
+    }
+    #buzz_submit.enabled.pressed
+    {
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f04040), to(#f08080));
+    }
+/* inactive */
+#inactive h1
+{
+    color: rgba(255, 255, 255, 0.7);
+}
+/* login card */
+#login_player
+{
+    margin: 20px 0px 15px;
+}
+/* forms */
+input
+{
+    width: 70%;
+    height: 28px;
+    font-size: 18px;
+    text-align: center;
+}
+div.submit
+{
+    width: 70%;
+    height: 36px;
+    margin: 15px 15% 0px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 38px;
+    text-transform: uppercase;
+    text-align: center;
+    border: 1px solid #404040;
+    color: #ffffff;
+    overflow: hidden;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e0e0e0), to(#909090));
+    text-shadow: 0px -1px 0px #808080;
+    -webkit-border-radius: 10px;
+    -webkit-background-clip: padding-box;
+    cursor: pointer;
+}
+    div.submit.pressed
+    {
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#909090), to(#e0e0e0));
+    }
+/* font faces */
+@font-face
+{
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Droid Sans'), local('DroidSans'), url('/s/fonts/DroidSans.ttf') format('truetype');
+}
+@font-face
+{
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Droid Sans Bold'), local('DroidSans-Bold'), url('/s/fonts/DroidSans-Bold.ttf') format('truetype');
+}
+@font-face
+{
+  font-family: 'Yahoo';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Yahoo'), url('/s/fonts/Yahoo.ttf') format('truetype');
+}
